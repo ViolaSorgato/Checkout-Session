@@ -1,8 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from "./components/Homepage/Homepage";
+import Confirmationpage from "./components/Confirmationpage/Confirmationpage";
+
 function App() {
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="confirmation" element={<Confirmationpage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
