@@ -1,5 +1,5 @@
 function Confirmationpage() {
-  return <div>Confirmationpage</div>;
+  return <div>Thank you for your purchase!</div>;
 }
 
 export default Confirmationpage;
