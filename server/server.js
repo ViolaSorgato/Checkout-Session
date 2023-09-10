@@ -15,10 +15,6 @@ app.use(
   })
 );
 
-// app.get("/", (req, res) => {
-//   res.send("Hello from Express");
-// });
-
 //START STRIPE SESSION
 app.post("/create-checkout-session", async (req, res) => {
   try {
