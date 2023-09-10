@@ -23,12 +23,12 @@ app.use(
 app.post("/create-checkout-session", async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
-      line_items: [
-        {
-          price: "price_1NnhNMBAKZ3Nd1eYqZ92gdHT",
-          quantity: 2,
-        },
-      ],
+      line_items: req.body.map((item) => {
+        return {
+          price: item.product,
+          quantity: item.quantity,
+        };
+      }),
       mode: "payment",
       success_url: "http://localhost:5173/confirmation",
       cancel_url: CLIENT_URL,
