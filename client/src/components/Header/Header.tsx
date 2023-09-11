@@ -1,14 +1,21 @@
 import { Button } from "antd";
-import { Layout, Space } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingTwoTone } from "@ant-design/icons";
 import Logo from "../../assets/Logo.png";
+import "./Header.css";
 
 export default function Header() {
   return (
-    <>
-      <img src={Logo} alt="Logo" />
-      <Button type="primary">Login</Button>
-      <ShoppingCartOutlined />
-    </>
+    <nav>
+      <div className="LogoNav">
+        <img src={Logo} alt="Logo" />
+      </div>
+
+      <div className="BtnNav">
+        <Button type="primary" className="LoginBtn">
+          Login
+        </Button>
+        <ShoppingTwoTone className="ShoppincartIcon" twoToneColor="#7E66F9" />
+      </div>
+    </nav>
   );
 }

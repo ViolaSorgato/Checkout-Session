@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ProductList from "../ProductList/ProductList";
 import Header from "../Header/Header";
+import { Button } from "antd";
+import "./Homepage.css";
 
 function Homepage() {
   // example of hardcoded cart
@@ -39,7 +41,9 @@ function Homepage() {
     <>
       <Header />
       <ProductList />
-      <button onClick={handlePayment}>To checkout</button>
+      <Button className="CheckoutBtn" type="primary" onClick={handlePayment}>
+        To checkout
+      </Button>
     </>
   );
 }
