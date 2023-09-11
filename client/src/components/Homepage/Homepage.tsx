@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ProductList from "../ProductList/ProductList";
+import Header from "../Header/Header";
 
 function Homepage() {
   // example of hardcoded cart
@@ -35,7 +37,8 @@ function Homepage() {
 
   return (
     <>
-      <div>Homepage</div>
+      <Header />
+      <ProductList />
       <button onClick={handlePayment}>To checkout</button>
     </>
   );
