@@ -9,11 +9,15 @@ import {
 } from "react";
 
 export interface Product {
+  //   price: any;
   id: string;
   name: string;
   description: string;
   images: [];
   default_price: Price;
+  price: {
+    unit_amount: string; // Assuming unit_amount is a string
+  };
 }
 
 export interface Price {

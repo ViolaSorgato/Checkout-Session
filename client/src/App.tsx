@@ -16,7 +16,7 @@ const App = () => {
             <Route path="/confirmation" element={<Confirmationpage />} />
           </Routes>
         </BrowserRouter>
-        <MainContent />
+        {/* <MainContent /> */}
       </ProductProvider>
     </div>
   );
