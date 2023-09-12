@@ -2,10 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
+const bodyParser = require("body-parser");
+const { productRouter } = require("./product/product.router");
 const app = express();
 app.use(express.json()); //goes through all post endpoints and transform into right data format
-
+app.use(bodyParser.json());
 const CLIENT_URL = "http://127.0.0.1:5173";
 
 // Middlewares, important with right order
@@ -14,6 +15,8 @@ app.use(
     origin: "*",
   })
 );
+
+app.use("/api", productRouter);
 
 //START STRIPE SESSION
 app.post("/create-checkout-session", async (req, res) => {
