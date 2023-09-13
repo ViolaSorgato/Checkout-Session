@@ -1,5 +1,5 @@
 import { useProductContext } from "../../context/ProductContext";
-import { Card, Col, Row, Space } from "antd";
+import { Card, Space } from "antd";
 import "./ProductList.css";
 
 export default function ProductList() {
