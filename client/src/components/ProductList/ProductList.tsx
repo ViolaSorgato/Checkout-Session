@@ -30,7 +30,7 @@ export default function ProductList() {
               />
             ))}
           </div>
-          <p className="description">{product.description}</p>
+          {/* <p className="description">{product.description}</p> */}
           <p>Price: ${product.price.unit_amount}</p>
         </Card>
       ))}
