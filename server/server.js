@@ -4,6 +4,7 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const bodyParser = require("body-parser");
 const { productRouter } = require("./product/product.router");
+const { userRouter } = require("./user/user.router");
 const app = express();
 app.use(express.json()); //goes through all post endpoints and transform into right data format
 app.use(bodyParser.json());
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use("/api", productRouter);
+app.use("/api", userRouter);
 
 //START STRIPE SESSION
 app.post("/create-checkout-session", async (req, res) => {

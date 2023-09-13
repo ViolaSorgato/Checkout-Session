@@ -1,0 +1,20 @@
+[
+  {
+    "id": "cus_Od9gj2lf4HkfMU",
+    "username": "User Usersson",
+    "password": "$2b$08$TxVepDILvOxCP3j572Zc2uN00oXCeMAnW.1Es8GEvJb6dutyBBRgO",
+    "email": "user@user.com"
+  },
+  {
+    "id": "cus_Od9jmpQGtP7SjI",
+    "username": "Test Testsson",
+    "password": "$2b$08$49oi/So1UtVJPsXdHWnqnurLbl.OQ4nbnEWztChgW9ZNLUnIlDO7a",
+    "email": "test@gmail.com"
+  },
+  {
+    "id": "cus_Od9ySFAKLIOwvM",
+    "username": "Charlie Köttbulle",
+    "password": "$2b$08$g6J5/625ICzZzlP.tXPUJebZ.iQddj5eeCVCQ83DQ9vhQuyMsJxPK",
+    "email": "Charlie@gmail.com"
+  }
+]
