@@ -15,7 +15,7 @@ export default function ProductList() {
       {products.map((product) => (
         <Card
           hoverable
-          style={{ width: 240, display: "flex" }}
+          style={{ width: 250, display: "flex" }}
           className="ProductCard"
           key={product.id}
         >
