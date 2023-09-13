@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const filePath = path.join("db", "users.json");
 
+//DO WE NEED THIS? UNCLEAR
 async function getUsers(req, res) {
   try {
     const users = await stripe.customers.list({
@@ -16,12 +17,12 @@ async function getUsers(req, res) {
   }
 }
 
+//REGISTER NEW USER AND ADD IT TO THE JSON FILE
 async function registerUser(req, res) {
   const { username, password, email } = req.body;
-  //hash password
-  const hashedPassword = await bcrypt.hash(password, 8);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-  //array of users
+  //ARRAY OF USERS
   let usersArray = [];
   try {
     const fileData = fs.readFileSync(filePath, "utf8");
@@ -29,7 +30,8 @@ async function registerUser(req, res) {
   } catch (err) {
     console.log(err);
   }
-  //check if users exists
+
+  //CHECK IF USER ALREADY EXISTS
   const existingUser = usersArray.find(
     (user) => user.username === username || user.email === email
   );
@@ -37,14 +39,14 @@ async function registerUser(req, res) {
     return res.status(400).json({ Message: "User already exists" });
   }
 
-  //register customer in skype
+  //CREATE CUSTOMER IN STRIPE
   try {
     const user = await stripe.customers.create({
       email: email,
       name: username,
     });
 
-    //newUser object
+    //COMBINE OUR USER WITH STRIPE CUSTOMER TO ADD ID
     const newUser = {
       id: user.id,
       username,
@@ -52,6 +54,7 @@ async function registerUser(req, res) {
       email: user.email,
     };
 
+    //PUSH INTO ARRAY & HANDLE ERROR
     usersArray.push(newUser);
     fs.writeFileSync(filePath, JSON.stringify(usersArray, null, 2));
     res.json({ newUser });
