@@ -21,10 +21,8 @@ export default function Header() {
         <img src={Logo} alt="Logo" />
       </div>
 
-      <div className="logindiv">
+      <div className="BtnNav">
         <LoginBtn />
-      </div>
-      <div className="icondiv">
         <ShoppingTwoTone
           className="ShoppincartIcon"
           twoToneColor="#7E66F9"
