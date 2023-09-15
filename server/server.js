@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const bodyParser = require("body-parser");
+const cookieSession = require("cookie-session");
 const { productRouter } = require("./product/product.router");
 const { userRouter } = require("./user/user.router");
 const app = express();
@@ -14,6 +15,15 @@ const CLIENT_URL = "http://127.0.0.1:5173";
 app.use(
   cors({
     origin: "*",
+  })
+);
+app.use(
+  cookieSession({
+    secret: "s3cr3t",
+    maxAge: 1000 * 60 * 60 * 24,
+    sameSite: "strict",
+    httpOnly: true,
+    secure: false,
   })
 );
 

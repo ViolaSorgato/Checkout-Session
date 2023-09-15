@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const filePath = path.join("db", "users.json");
 
+let usersArray = [];
 //DO WE NEED THIS? UNCLEAR
 async function getUsers(req, res) {
   try {
@@ -23,7 +24,7 @@ async function registerUser(req, res) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   //ARRAY OF USERS
-  let usersArray = [];
+
   try {
     const fileData = fs.readFileSync(filePath, "utf8");
     usersArray = JSON.parse(fileData);
@@ -65,16 +66,38 @@ async function registerUser(req, res) {
 
 //LOGIN
 async function loginUser(req, res) {
+  const { email, username, password } = req.body;
+
   try {
-    res.status(200).json();
+    const fileData = fs.readFileSync(filePath, "utf8");
+    usersArray = JSON.parse(fileData);
+    const user = usersArray.find((user) => user.username === username);
+
+    if (!user) {
+      return res.status(401).json("Wrong username");
+    }
+    const passwordOk = await bcrypt.compare(password, user.password);
+    if (passwordOk) {
+      delete user.password;
+      req.session = user;
+      res.json({
+        Message: "Successfully logged in",
+        user: {
+          username: user.username,
+          email: user.email,
+        },
+      });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 }
 
+//LOGOUT
 async function logoutUser(req, res) {
   try {
-    res.status(200).json();
+    req.session = null;
+    res.status(204).json("Successfully logged out.");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

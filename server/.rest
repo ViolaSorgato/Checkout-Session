@@ -10,9 +10,9 @@ POST http://localhost:3000/api/users/register
 Content-Type: application/json
 
 {
-    "email": "Charlie@gmail.com",
-    "username": "Charlie Köttbulle",
-    "password": "12345"
+    "email": "coffee@gmail.com",
+    "username": "Coffee Cup",
+    
 }
 
 
@@ -24,6 +24,7 @@ Content-Type: application/json
 {
     "email": "user@user.com",
     "username": "User Usersson",
+    "password": "12345"
 }
 
 
