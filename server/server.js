@@ -17,9 +17,10 @@ app.use(
     origin: "*",
   })
 );
+const secretKey = process.env.COOKIE_SECRET_KEY;
 app.use(
   cookieSession({
-    secret: "s3cr3t",
+    secret: [secretKey],
     maxAge: 1000 * 60 * 60 * 24,
     sameSite: "strict",
     httpOnly: true,
