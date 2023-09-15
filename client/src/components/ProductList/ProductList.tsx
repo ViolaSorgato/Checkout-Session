@@ -1,5 +1,5 @@
 import { useProductContext } from "../../context/ProductContext";
-import { Card, Space } from "antd";
+import { Button, Card, Space } from "antd";
 import "./ProductList.css";
 
 export default function ProductList() {
@@ -32,6 +32,9 @@ export default function ProductList() {
           </div>
           {/* <p className="description">{product.description}</p> */}
           <p>Price: ${product.price.unit_amount}</p>
+          <Button className="addToCartBtn" type="primary">
+            Add to cart
+          </Button>
         </Card>
       ))}
     </div>
