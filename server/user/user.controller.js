@@ -74,20 +74,23 @@ async function loginUser(req, res) {
     const user = usersArray.find((user) => user.username === username);
 
     if (!user) {
-      return res.status(401).json("Wrong username");
+      return res.status(401).json("Wrong username or password");
     }
     const passwordOk = await bcrypt.compare(password, user.password);
-    if (passwordOk) {
-      delete user.password;
-      req.session = user;
-      res.json({
-        Message: "Successfully logged in",
-        user: {
-          username: user.username,
-          email: user.email,
-        },
-      });
+
+    if (!passwordOk) {
+      return res.status(401).json({ error: "Incorrect username or password" });
     }
+
+    delete user.password;
+    req.session = user;
+    res.json({
+      Message: "Successfully logged in",
+      user: {
+        username: user.username,
+        email: user.email,
+      },
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

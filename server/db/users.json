@@ -22,5 +22,11 @@
     "username": "Coffee Cup",
     "password": "$2b$10$kxUmCXozMa4tFMLaXX4Iu.Gkmh0OKyj8yLVclJW60dPP/36a2AiXq",
     "email": "coffee@gmail.com"
+  },
+  {
+    "id": "cus_Odpeq8IaknE803",
+    "username": "Viola Sorgato",
+    "password": "$2b$10$rUrLav2decBFJDYa5I5ffu8T8ImUjmSNMPzsjeIgQ6rCTUKw8lQ92",
+    "email": "viola@gmail.com"
   }
 ]
