@@ -5,6 +5,8 @@ import LoginBtn from "../LoginBtn/LoginBtn";
 import "./Header.css";
 import { useState } from "react";
 import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
+import CartItem from "../CartItem/CartItem";
+import { useShoppingCart } from "../../context/CartContext";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -15,6 +17,7 @@ export default function Header() {
   const onClose = () => {
     setOpen(false);
   };
+  const { cartItems } = useShoppingCart(); // Corrected variable name
   return (
     <nav>
       <div className="LogoNav">
@@ -39,9 +42,12 @@ export default function Header() {
             </Space>
           }
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <div>
+            {cartItems?.map((item) => (
+              <CartItem key={item.id} {...item} />
+            ))}
+          </div>
+
           <CheckoutBtn />
         </Drawer>
       </div>

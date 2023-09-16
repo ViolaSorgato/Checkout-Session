@@ -1,6 +1,7 @@
 import { useProductContext } from "../../context/ProductContext";
-import { Button, Card, Space } from "antd";
+import { Card, Space } from "antd";
 import "./ProductList.css";
+import PurchaseBtn from "../PurchaseBtn/PurchaseBtn";
 
 export default function ProductList() {
   const { products } = useProductContext();
@@ -30,11 +31,8 @@ export default function ProductList() {
               />
             ))}
           </div>
-          {/* <p className="description">{product.description}</p> */}
           <p>Price: ${product.price.unit_amount}</p>
-          <Button className="addToCartBtn" type="primary">
-            Add to cart
-          </Button>
+          <PurchaseBtn product={product} />
         </Card>
       ))}
     </div>
