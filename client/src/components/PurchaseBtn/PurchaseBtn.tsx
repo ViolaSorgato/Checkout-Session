@@ -1,11 +1,12 @@
+import "./PurchaseBtn.css";
 import { Button } from "antd";
 import { useShoppingCart } from "../../context/CartContext";
 import { Product } from "../../context/ProductContext";
 import {
-  PlusCircleOutlined,
-  MinusCircleOutlined,
+  PlusOutlined,
+  MinusOutlined,
   DeleteOutlined,
-  ShoppingTwoTone,
+  ShoppingOutlined,
 } from "@ant-design/icons";
 
 type Props = {
@@ -25,34 +26,30 @@ export default function PurchaseBtn({ product }: Props) {
   return quantity === 0 ? (
     <div>
       <Button
+        className="AddToCartBtn"
         type="primary"
-        icon={<ShoppingTwoTone />}
+        icon={<ShoppingOutlined />}
         onClick={() => increaseCartQuantity(product.id)}
       >
         Add to cart
       </Button>
     </div>
   ) : (
-    <div>
-      <Button type="primary" onClick={() => increaseCartQuantity(product.id)}>
-        <PlusCircleOutlined />
+    <div className="BtnContainer">
+      <Button onClick={() => increaseCartQuantity(product.id)}>
+        <PlusOutlined />
       </Button>
-
-      <div>
-        <span>{quantity}</span> in cart
-      </div>
-
+      <span>{quantity}</span> in cart
       {quantity > 1 ? (
-        <Button type="primary" onClick={() => decreaseCartQuantity(product.id)}>
-          <MinusCircleOutlined />
+        <Button onClick={() => decreaseCartQuantity(product.id)}>
+          <MinusOutlined />
         </Button>
       ) : (
-        <Button type="primary">
-          <MinusCircleOutlined />
+        <Button>
+          <MinusOutlined />
         </Button>
       )}
-
-      <Button type="primary" onClick={() => removeFromCart(product.id)}>
+      <Button onClick={() => removeFromCart(product.id)}>
         <DeleteOutlined />
       </Button>
     </div>

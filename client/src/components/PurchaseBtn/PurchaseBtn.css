@@ -1,0 +1,9 @@
+.AddToCartBtn {
+  background-color: #7e66f9;
+}
+
+.BtnContainer {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
