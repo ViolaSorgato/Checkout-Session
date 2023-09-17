@@ -1,0 +1,13 @@
+.CartContainer {
+  gap: 2rem;
+}
+
+.quantity-btn-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cartitem-qty-btn {
+  background-color: #7e66f9;
+}
