@@ -31,7 +31,7 @@ export default function ProductList() {
               />
             ))}
           </div>
-          <p>Price: ${product.price.unit_amount}</p>
+          <p>Price: {product.price.unit_amount} kr</p>
           <PurchaseBtn product={product} />
         </Card>
       ))}

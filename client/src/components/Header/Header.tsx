@@ -44,7 +44,7 @@ export default function Header() {
         >
           <div>
             {cartItems
-              .filter((item) => item.id && item.quantity > 0) // Filter out items with no id or zero quantity
+              .slice(1) // Necessary to delete a bug, empty element in position [0]
               .map((item) => (
                 <CartItem key={item.id} {...item} />
               ))}

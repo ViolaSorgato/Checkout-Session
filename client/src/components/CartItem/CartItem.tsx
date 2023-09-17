@@ -22,10 +22,10 @@ export default function CartItem({ id, quantity }: CartItemProps) {
     <>
       <Row className="quantity-btn-container">
         <Col>
-          {/* <img
-            // src={item?.images}
+          <img
+            src={item?.images as unknown as string}
             style={{ width: "50px", height: "50px", objectFit: "cover" }}
-          /> */}
+          />
         </Col>
         <h3 className="cartitem-title">{item?.name} </h3>
         <p className="cartitem-price ">{item?.price.unit_amount} kr</p>
