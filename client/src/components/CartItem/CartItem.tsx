@@ -1,12 +1,8 @@
 import { useShoppingCart } from "../../context/CartContext";
 import { useProductContext } from "../../context/ProductContext";
-// import "../CartItem/CartItem.css";
-import { Col, Row } from "antd";
-import {
-  PlusCircleOutlined,
-  MinusCircleOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
+import "../CartItem/CartItem.css";
+import { Button, Col, Row, Divider } from "antd";
+import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
 // import { formatCurrency } from "../../utilities/formatCurrency";
 
 type CartItemProps = {
@@ -24,53 +20,55 @@ export default function CartItem({ id, quantity }: CartItemProps) {
 
   return (
     <>
-      <Row>
+      <Row className="quantity-btn-container">
         <Col>
-          <img
+          {/* <img
             // src={item?.images}
             style={{ width: "50px", height: "50px", objectFit: "cover" }}
-          />
+          /> */}
         </Col>
-
-        <Col>
-          <span className="cartitem-title">{item?.name} </span>
-          <br />
-
-          <span className="cartitem-price ">{item?.price.unit_amount}</span>
-        </Col>
+        <h3 className="cartitem-title">{item?.name} </h3>
+        <p className="cartitem-price ">{item?.price.unit_amount} kr</p>
       </Row>
 
-      <Row>
-        <Col
+      <Row className="quantity-btn-container">
+        <Button
+          type="primary"
+          size="small"
           className="cartitem-qty-btn"
           onClick={() => item && increaseCartQuantity(item?.id)}
         >
-          <PlusCircleOutlined />
-        </Col>
+          <PlusOutlined />
+        </Button>
 
-        <Col className="cartitem-qty-btn">
+        <Col>
           <div className="qty-div">x {quantity}</div>
         </Col>
 
         {quantity > 1 ? (
-          <Col
+          <Button
+            type="primary"
+            size="small"
             className="cartitem-qty-btn"
             onClick={() => item && decreaseCartQuantity(item?.id)}
           >
-            <MinusCircleOutlined />
-          </Col>
+            <MinusOutlined />
+          </Button>
         ) : (
-          <Col className="cartitem-qty-btn">
-            <MinusCircleOutlined />
-          </Col>
+          <Button type="primary" size="small" className="cartitem-qty-btn">
+            <MinusOutlined />
+          </Button>
         )}
 
-        <Col
+        <Button
+          type="primary"
+          size="small"
           className="cartitem-qty-btn"
           onClick={() => item && removeFromCart(item?.id)}
         >
           <DeleteOutlined />
-        </Col>
+        </Button>
+        <Divider />
       </Row>
     </>
   );

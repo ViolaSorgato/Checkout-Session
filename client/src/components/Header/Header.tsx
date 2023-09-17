@@ -43,9 +43,11 @@ export default function Header() {
           }
         >
           <div>
-            {cartItems?.map((item) => (
-              <CartItem key={item.id} {...item} />
-            ))}
+            {cartItems
+              .filter((item) => item.id && item.quantity > 0) // Filter out items with no id or zero quantity
+              .map((item) => (
+                <CartItem key={item.id} {...item} />
+              ))}
           </div>
 
           <CheckoutBtn />
