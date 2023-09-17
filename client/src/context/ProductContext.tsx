@@ -9,7 +9,6 @@ import {
 } from "react";
 
 export interface Product {
-  //   price: any;
   id: string;
   name: string;
   description: string;
