@@ -20,55 +20,58 @@ export default function CartItem({ id, quantity }: CartItemProps) {
 
   return (
     <>
-      <Row className="quantity-btn-container">
-        <Col>
+      <Row className="cartitem-container">
+        <Col className="img-container">
           <img
             src={item?.images as unknown as string}
-            style={{ width: "50px", height: "50px", objectFit: "cover" }}
+            style={{ width: "70px", height: "70px", objectFit: "cover" }}
           />
         </Col>
-        <h3 className="cartitem-title">{item?.name} </h3>
-        <p className="cartitem-price ">{item?.price.unit_amount} kr</p>
-      </Row>
 
-      <Row className="quantity-btn-container">
-        <Button
-          type="primary"
-          size="small"
-          className="cartitem-qty-btn"
-          onClick={() => item && increaseCartQuantity(item?.id)}
-        >
-          <PlusOutlined />
-        </Button>
+        <Col className="otherinfo-container">
+          <h3 className="cartitem-title">{item?.name} </h3>
+          <p className="cartitem-price">{item?.price.unit_amount} kr</p>
 
-        <Col>
-          <div className="qty-div">x {quantity}</div>
+          <div className="btn-container">
+            <Button
+              type="primary"
+              size="small"
+              className="cartitem-qty-btn"
+              onClick={() => item && increaseCartQuantity(item?.id)}
+            >
+              <PlusOutlined />
+            </Button>
+
+            <Col>
+              <span>x{quantity}</span>
+            </Col>
+
+            {quantity > 1 ? (
+              <Button
+                type="primary"
+                size="small"
+                className="cartitem-qty-btn"
+                onClick={() => item && decreaseCartQuantity(item?.id)}
+              >
+                <MinusOutlined />
+              </Button>
+            ) : (
+              <Button type="primary" size="small" className="cartitem-qty-btn">
+                <MinusOutlined />
+              </Button>
+            )}
+
+            <Button
+              type="primary"
+              size="small"
+              className="cartitem-qty-btn"
+              onClick={() => item && removeFromCart(item?.id)}
+            >
+              <DeleteOutlined />
+            </Button>
+          </div>
+          <Divider />
         </Col>
-
-        {quantity > 1 ? (
-          <Button
-            type="primary"
-            size="small"
-            className="cartitem-qty-btn"
-            onClick={() => item && decreaseCartQuantity(item?.id)}
-          >
-            <MinusOutlined />
-          </Button>
-        ) : (
-          <Button type="primary" size="small" className="cartitem-qty-btn">
-            <MinusOutlined />
-          </Button>
-        )}
-
-        <Button
-          type="primary"
-          size="small"
-          className="cartitem-qty-btn"
-          onClick={() => item && removeFromCart(item?.id)}
-        >
-          <DeleteOutlined />
-        </Button>
-        <Divider />
       </Row>
     </>
   );
