@@ -37,6 +37,8 @@ export default function ProductList() {
           <p>Price: {product.price.unit_amount} kr</p>
           {/* <PurchaseBtn product={product} /> */}
           <Button
+            type="primary"
+            className="addToCartBtn"
             onClick={() =>
               addToCart(product.price.id, product.name, product.price)
             }
