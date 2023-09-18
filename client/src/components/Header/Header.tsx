@@ -6,7 +6,6 @@ import "./Header.css";
 import { useState } from "react";
 import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
 import CartItem from "../CartItem/CartItem";
-import { useShoppingCart } from "../../context/CartContext";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
