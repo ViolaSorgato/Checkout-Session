@@ -6,7 +6,6 @@ import "./Header.css";
 import { useState } from "react";
 import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
 import CartItem from "../CartItem/CartItem";
-import { useShoppingCart } from "../../context/CartContext";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -17,7 +16,7 @@ export default function Header() {
   const onClose = () => {
     setOpen(false);
   };
-  const { cartItems } = useShoppingCart(); // Corrected variable name
+  // const { cartItems } = useShoppingCart(); // Corrected variable name
   return (
     <nav>
       <div className="LogoNav">
@@ -43,11 +42,7 @@ export default function Header() {
           }
         >
           <div>
-            {cartItems
-              .slice(1) // Necessary to delete a bug, empty element in position [0]
-              .map((item) => (
-                <CartItem key={item.id} {...item} />
-              ))}
+            <CartItem />
           </div>
 
           <CheckoutBtn />

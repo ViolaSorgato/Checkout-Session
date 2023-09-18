@@ -1,10 +1,13 @@
 import { useProductContext } from "../../context/ProductContext";
-import { Card, Space } from "antd";
+import { Button, Card, Space } from "antd";
+
 import "./ProductList.css";
-import PurchaseBtn from "../PurchaseBtn/PurchaseBtn";
+// import PurchaseBtn from "../PurchaseBtn/PurchaseBtn";
+import { useShoppingCart } from "../../context/CartContext";
 
 export default function ProductList() {
   const { products } = useProductContext();
+  const { addToCart } = useShoppingCart();
 
   return (
     <div className="ProductListContainer">
@@ -32,7 +35,14 @@ export default function ProductList() {
             ))}
           </div>
           <p>Price: {product.price.unit_amount} kr</p>
-          <PurchaseBtn product={product} />
+          {/* <PurchaseBtn product={product} /> */}
+          <Button
+            onClick={() =>
+              addToCart(product.price.id, product.name, product.price)
+            }
+          >
+            Add to cart
+          </Button>
         </Card>
       ))}
     </div>

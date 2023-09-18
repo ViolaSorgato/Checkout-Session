@@ -1,21 +1,18 @@
 import { Button } from "antd";
-import { useState } from "react";
 import "./CheckoutBtn.css";
+import { useShoppingCart } from "../../context/CartContext";
 
 export default function CheckoutBtn() {
-  // example of hardcoded cart
-  const [cart, setCart] = useState([
-    {
-      product: "price_1NnhEZBAKZ3Nd1eYdvslLfvd",
-      quantity: 2,
-    },
-    {
-      product: "price_1Nnh6YBAKZ3Nd1eYY6dtbsNm",
-      quantity: 1,
-    },
-  ]);
+  const { cartItems } = useShoppingCart();
 
   async function handlePayment() {
+    const itemsToCheckout = cartItems.map((cartItem) => ({
+      product: cartItem.id,
+      quantity: cartItem.quantity,
+    }));
+    console.log(itemsToCheckout);
+    console.log(cartItems);
+
     const response = await fetch(
       "http://localhost:3000/create-checkout-session",
       {
@@ -23,7 +20,7 @@ export default function CheckoutBtn() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(cart),
+        body: JSON.stringify({ items: itemsToCheckout }),
       }
     );
 
