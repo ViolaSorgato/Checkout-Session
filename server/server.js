@@ -42,7 +42,7 @@ app.post("/create-checkout-session", async (req, res) => {
         };
       }),
       customer: req.session.id,
-      mode: "payment",
+      mode: "subscription",
       success_url: "http://localhost:5173/confirmation",
       cancel_url: CLIENT_URL,
     });
