@@ -10,6 +10,8 @@ export default function CheckoutBtn() {
       product: cartItem.id,
       quantity: cartItem.quantity,
     }));
+    console.log(itemsToCheckout);
+    console.log(cartItems);
 
     const response = await fetch(
       "http://localhost:3000/create-checkout-session",
@@ -18,7 +20,7 @@ export default function CheckoutBtn() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(itemsToCheckout),
+        body: JSON.stringify({ items: itemsToCheckout }),
       }
     );
 
