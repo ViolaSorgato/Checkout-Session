@@ -2,12 +2,20 @@
   gap: 2rem;
 }
 
-.quantity-btn-container {
+.cartitem-container {
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: 1rem;
 }
 
+.cartitem-price {
+  padding: -1;
+}
+
+.btn-container {
+  display: flex;
+  gap: 1rem;
+}
 .cartitem-qty-btn {
   background-color: #7e66f9;
 }
