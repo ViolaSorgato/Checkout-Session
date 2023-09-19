@@ -1,6 +1,7 @@
 const { initStripe } = require("../stripe");
 const stripe = initStripe();
 const bcrypt = require("bcrypt");
+const { log } = require("console");
 const fs = require("fs");
 const path = require("path");
 const filePath = path.join("db", "users.json");
@@ -16,6 +17,15 @@ async function getUsers(req, res) {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+}
+
+//authorization
+async function authorization(req, res) {
+  if (!req.session.id) {
+    return res.status(401).json("You are not logged in");
+  }
+
+  return req.session, res.status(200).json(req.session);
 }
 
 //REGISTER NEW USER AND ADD IT TO THE JSON FILE
@@ -66,8 +76,8 @@ async function registerUser(req, res) {
 
 //LOGIN
 async function loginUser(req, res) {
-  const { email, username, password } = req.body;
-
+  const { username, password } = req.body;
+  console.log(req.body);
   try {
     const fileData = fs.readFileSync(filePath, "utf8");
     usersArray = JSON.parse(fileData);
@@ -84,11 +94,10 @@ async function loginUser(req, res) {
 
     delete user.password;
     req.session = user;
-    res.json({
+    res.status(200).json({
       Message: "Successfully logged in",
       user: {
         username: user.username,
-        email: user.email,
       },
     });
   } catch (error) {
@@ -106,4 +115,10 @@ async function logoutUser(req, res) {
   }
 }
 
-module.exports = { getUsers, registerUser, loginUser, logoutUser };
+module.exports = {
+  getUsers,
+  authorization,
+  registerUser,
+  loginUser,
+  logoutUser,
+};

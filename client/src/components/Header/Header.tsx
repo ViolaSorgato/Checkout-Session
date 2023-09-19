@@ -1,11 +1,12 @@
 import { Button, Drawer, Space } from "antd";
 import { ShoppingTwoTone } from "@ant-design/icons";
 import Logo from "../../assets/Logo.png";
-import LoginBtn from "../LoginBtn/LoginBtn";
+import LoginBtn from "../Login/LoginBtn";
 import "./Header.css";
 import { useState } from "react";
 import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
 import CartItem from "../CartItem/CartItem";
+import RegisterBtn from "../Register/RegisterBtn";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function Header() {
       </div>
 
       <div className="BtnNav">
+        <RegisterBtn />
         <LoginBtn />
         <ShoppingTwoTone
           className="ShoppincartIcon"
