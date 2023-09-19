@@ -100,7 +100,7 @@ async function loginUser(req, res) {
 async function logoutUser(req, res) {
   try {
     req.session = null;
-    res.status(204).json("Successfully logged out.");
+    res.status(200).json("Successfully logged out.");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
