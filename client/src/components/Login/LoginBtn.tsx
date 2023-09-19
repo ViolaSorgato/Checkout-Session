@@ -1,26 +1,34 @@
 import { Button, Modal, Form, Input } from "antd";
 import "./LoginBtn.css";
 import { useState } from "react";
-import login from "../../context/UserContext";
+import { RegisteredUser, useUserContext } from "../../context/UserContext";
 
 export default function LoginBtn() {
+  const { loggedInUser, login, logout } = useUserContext();
+
+  //CODE TO OPEN/CLOSE MODAL
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    login;
-    setIsModalOpen(false);
-  };
+  // const handleOk = () => {
+  //   setIsModalOpen(false);
+  // };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  // //CODE TO HANDLE FORM
+  // const handleCancel = () => {
+  //   setIsModalOpen(false);
+  // };
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const onFinish = async (values: any) => {
+    const registeredUser: RegisteredUser = {
+      username: values.username,
+      password: values.password,
+    };
+    await login(registeredUser);
+    setIsModalOpen(false);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -29,19 +37,26 @@ export default function LoginBtn() {
 
   type FieldType = {
     username?: string;
-    email?: string;
     password?: string;
   };
   return (
     <div>
-      <Button type="primary" className="LoginBtn" onClick={showModal}>
-        Login
-      </Button>
+      {loggedInUser && (
+        <Button type="primary" className="LoginBtn" onClick={logout}>
+          Logout
+        </Button>
+      )}
+      {!loggedInUser && (
+        <Button type="primary" className="LoginBtn" onClick={showModal}>
+          Login
+        </Button>
+      )}
+
       <Modal
         title="Type in your credentials"
         open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        // onOk={handleOk}
+        // onCancel={handleCancel}
         okText="Login"
       >
         <Form
@@ -68,6 +83,9 @@ export default function LoginBtn() {
             rules={[{ required: true, message: "Please input your password!" }]}
           >
             <Input.Password />
+          </Form.Item>
+          <Form.Item>
+            <Button htmlType="submit">Login into account</Button>
           </Form.Item>
         </Form>
       </Modal>

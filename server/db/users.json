@@ -28,5 +28,29 @@
     "username": "Viola Sorgato",
     "password": "$2b$10$rUrLav2decBFJDYa5I5ffu8T8ImUjmSNMPzsjeIgQ6rCTUKw8lQ92",
     "email": "viola@gmail.com"
+  },
+  {
+    "id": "cus_OfPTUu47G13VvN",
+    "username": "Test1 test1",
+    "password": "$2b$10$SDBQYv/IQ/Yyx9urxx5R3exgrYHbgid/kXhAC5BkS7W3IaCedbTQS",
+    "email": "test1@test1.se"
+  },
+  {
+    "id": "cus_OfPUloPWzuguq0",
+    "username": "bla bla",
+    "password": "$2b$10$T/eRF2oni04RlPummGArV.hKOy5I8mtef8EmcwGirGeB0P5RacLP6",
+    "email": "test1@bla.se"
+  },
+  {
+    "id": "cus_OfQHZ55HqjSQVW",
+    "username": "",
+    "password": "$2b$10$YreBIjya81CLZBaFTJflW.d6xljD.DdjRbgH8AKfupnrSa0SBncT.",
+    "email": null
+  },
+  {
+    "id": "cus_OfR6uf3GtdYvcr",
+    "username": "Pinco Pallino",
+    "password": "$2b$10$FDwT5l7MM30zbXIThzsrre3l/y6/4nFWTHuPxP5Xc9RfaGu/WFN5S",
+    "email": "pinco@pallino.se"
   }
 ]

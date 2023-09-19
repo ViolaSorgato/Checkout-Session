@@ -1,16 +1,33 @@
 import { useState } from "react";
 import "./RegisterBtn.css";
 import { Button, Modal, Form, Input } from "antd";
+import { NewUser, useUserContext } from "../../context/UserContext";
 
 export default function RegisterBtn() {
+  const {
+    registerUser,
+    username,
+    setUsername,
+    email,
+    setEmail,
+    password,
+    setPassword,
+  } = useUserContext();
+
   //FUNCTIONS TO OPEN/CLOSE MODAL
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
+  const handleOk = async () => {
     setIsModalOpen(false);
+    const newUser: NewUser = {
+      username,
+      email,
+      password,
+    };
+    await registerUser(newUser);
   };
 
   //FUNCTIONS TO HANDLE FORM
@@ -57,7 +74,7 @@ export default function RegisterBtn() {
             label="Username"
             rules={[{ required: true, message: "Please input your username." }]}
           >
-            <Input />
+            <Input onChange={(e) => setUsername(e.target.value)} />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -66,13 +83,13 @@ export default function RegisterBtn() {
               { required: true, message: "Please input your email adress." },
             ]}
           >
-            <Input />
+            <Input onChange={(e) => setEmail(e.target.value)} />
           </Form.Item>
           <Form.Item<FieldType>
             label="Password"
             rules={[{ required: true, message: "Please input your password." }]}
           >
-            <Input.Password />
+            <Input.Password onChange={(e) => setPassword(e.target.value)} />
           </Form.Item>
         </Form>
       </Modal>

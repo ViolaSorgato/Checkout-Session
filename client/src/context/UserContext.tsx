@@ -1,52 +1,114 @@
-import { ReactNode, createContext, useState, useEffect } from "react";
+// user-context.tsx
+import React, {
+  createContext,
+  useState,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+} from "react";
 
-export type User = {
-  username: string;
+// Define the interfaces
+
+export interface User {
+  id: string;
   email: string;
-  password: string;
-};
-
-export type UserType = {
   username: string;
   password: string;
-};
-
-interface UserContext {
-  loggedInUser?: User | null;
-  login: (user: UserType) => Promise<void>;
-  logout: () => Promise<void>;
 }
-const defaultValues = {
-  loggedInUser: null,
+
+export interface NewUser {
+  email: string;
+  username: string;
+  password: string;
+}
+
+export interface RegisteredUser {
+  username: string;
+  password: string;
+}
+
+// Create a UserContext interface
+export interface UserContext {
+  username: string;
+  setUsername: React.Dispatch<React.SetStateAction<string>>;
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  password: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  authorization: () => void;
+  registerUser: (newUser: NewUser) => Promise<void>;
+  login: (registeredUser: RegisteredUser) => void;
+  logout: () => void;
+  loggedInUser?: User | null;
+}
+
+// Initialize the context with default values
+const defaultValues: UserContext = {
+  username: "",
+  setUsername: () => {},
+  email: "",
+  setEmail: () => {},
+  password: "",
+  setPassword: () => {},
+  authorization: () => {},
+  registerUser: async () => {},
   login: async () => {},
-  logout: async () => {},
+  logout: () => {},
+  loggedInUser: null,
 };
 
-type Props = {
-  children: ReactNode;
-};
+// Create the UserContext
+export const UserContext = createContext<UserContext>(defaultValues);
+export const useUserContext = () => useContext(UserContext);
 
-export const UserContextType = createContext<UserContext>(defaultValues);
-
-const UserProvider = ({ children }: Props) => {
+// UserProvider component
+const UserProvider = ({ children }: PropsWithChildren<{}>) => {
+  // const [user, setUser] = useState<User | null>(null);
   const [loggedInUser, setloggedInUser] = useState<User | null>(null);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  //   useEffect(() => {
-  //     const authorization = async () => {
-  //       try {
-  //         const response = await fetch("/api/users/authorize");
-  //         const data = await response.json();
-  //         if (response.status === 200 || response.status === 304) {
-  //           setloggedInUser(data);
-  //         }
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     };
-  //     authorization();
-  //   }, []);
+  const authorization = async () => {
+    try {
+      const response = await fetch("/api/users/authorize");
+      const data = await response.json();
+      if (response.status === 200 || response.status === 304) {
+        setloggedInUser(data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  const login = async (user: UserType) => {
+  useEffect(() => {
+    authorization();
+  }, []);
+
+  // Function to register a new user
+  const registerUser = async (newUser: NewUser) => {
+    try {
+      const response = await fetch("api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+      const data = await response.json();
+
+      if (response.status === 200) {
+        console.log(data);
+      }
+      if (response.status === 409) {
+        console.log("error register");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const login = async (user: RegisteredUser) => {
     if (user) {
       try {
         const response = await fetch("api/users/login", {
@@ -57,16 +119,18 @@ const UserProvider = ({ children }: Props) => {
           body: JSON.stringify(user),
         });
         const data = await response.json();
-
+        console.log(data);
         if (response.status === 200) {
           setloggedInUser(data);
         }
-      } catch (err) {
-        console.log(err);
-      }
+        if (response.status === 404) {
+          console.log("error");
+        }
+      } catch (error) {}
     }
   };
 
+  // Function to log the user out
   const logout = async () => {
     try {
       const response = await fetch("api/users/logout", {
@@ -75,21 +139,32 @@ const UserProvider = ({ children }: Props) => {
           "Content-Type": "application/json",
         },
       });
-
-      if (response.status === 204) {
+      if (response.status === 200) {
         setloggedInUser(null);
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
-    <UserContextType.Provider
-      value={{ loggedInUser, login: login, logout: logout }}
+    <UserContext.Provider
+      value={{
+        username,
+        setUsername,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        authorization,
+        registerUser,
+        login,
+        logout,
+        loggedInUser,
+      }}
     >
       {children}
-    </UserContextType.Provider>
+    </UserContext.Provider>
   );
 };
 
