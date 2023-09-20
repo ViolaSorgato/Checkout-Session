@@ -1,3 +1,12 @@
 .LoginBtn {
   background-color: #7e66f9;
 }
+
+.submitBtn {
+  background-color: #7e66f9;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: flex-end;
+}

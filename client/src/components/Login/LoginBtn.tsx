@@ -84,8 +84,10 @@ export default function LoginBtn() {
           >
             <Input.Password />
           </Form.Item>
-          <Form.Item>
-            <Button htmlType="submit">Login into account</Button>
+          <Form.Item className="submit-container">
+            <Button type="primary" htmlType="submit" className="submitBtn">
+              Login
+            </Button>
           </Form.Item>
         </Form>
       </Modal>
