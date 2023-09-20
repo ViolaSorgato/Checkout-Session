@@ -52,5 +52,11 @@
     "username": "Pinco Pallino",
     "password": "$2b$10$FDwT5l7MM30zbXIThzsrre3l/y6/4nFWTHuPxP5Xc9RfaGu/WFN5S",
     "email": "pinco@pallino.se"
+  },
+  {
+    "id": "cus_OflR7AAdida6Ko",
+    "username": "test test",
+    "password": "$2b$10$QCwLpWvRZh3om9ByyVJIDOG0W4PmJq7KWGhb./UQoN8iIwlMuTLKi",
+    "email": "test@test.se"
   }
 ]

@@ -45,7 +45,7 @@ app.post("/create-checkout-session", async (req, res) => {
       customer: req.session.id,
       // mode: "subscription",
       mode: "payment",
-      success_url: "http://localhost:5173/confirmation",
+      success_url: `${CLIENT_URL}/confirmation`,
       cancel_url: CLIENT_URL,
     });
 

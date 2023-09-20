@@ -13,16 +13,13 @@ export default function CheckoutBtn() {
     console.log(itemsToCheckout);
     console.log(cartItems);
 
-    const response = await fetch(
-      "http://localhost:3000/create-checkout-session",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ items: itemsToCheckout }),
-      }
-    );
+    const response = await fetch("http://api/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ items: itemsToCheckout }),
+    });
 
     if (!response.ok) {
       return;
