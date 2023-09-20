@@ -13,7 +13,7 @@ export default function CheckoutBtn() {
     console.log(itemsToCheckout);
     console.log(cartItems);
 
-    const response = await fetch("http://api/create-checkout-session", {
+    const response = await fetch("/api/create-checkout-session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
