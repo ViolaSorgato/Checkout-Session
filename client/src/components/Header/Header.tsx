@@ -4,7 +4,6 @@ import Logo from "../../assets/Logo.png";
 import LoginBtn from "../Login/LoginBtn";
 import "./Header.css";
 import { useState } from "react";
-// import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
 import CartItem from "../CartItem/CartItem";
 import RegisterBtn from "../Register/RegisterBtn";
 
@@ -46,8 +45,6 @@ export default function Header() {
           <div>
             <CartItem />
           </div>
-
-          {/* <CheckoutBtn /> */}
         </Drawer>
       </div>
     </nav>
