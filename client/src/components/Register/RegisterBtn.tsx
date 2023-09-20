@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./RegisterBtn.css";
-import { Button, Modal, Form, Input } from "antd";
+import { Button, Modal, Form, Input, message } from "antd";
 import { NewUser, useUserContext } from "../../context/UserContext";
 
 export default function RegisterBtn() {
@@ -22,13 +22,21 @@ export default function RegisterBtn() {
   };
 
   const handleOk = async () => {
-    setIsModalOpen(false);
+    if (!username || !email || !password) {
+      message.error("Please fill in all fields before registering.");
+      return;
+    }
+
     const newUser: NewUser = {
       username,
       email,
       password,
     };
     await registerUser(newUser);
+    setIsModalOpen(false);
+    message.success(
+      "Wow! You are registered as a new customer! Now please log in."
+    );
   };
 
   //FUNCTIONS TO HANDLE FORM
