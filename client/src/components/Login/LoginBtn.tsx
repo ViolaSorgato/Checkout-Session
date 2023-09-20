@@ -12,15 +12,15 @@ export default function LoginBtn() {
   const showModal = () => {
     setIsModalOpen(true);
   };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   // const handleOk = () => {
   //   setIsModalOpen(false);
   // };
 
   // //CODE TO HANDLE FORM
-  // const handleCancel = () => {
-  //   setIsModalOpen(false);
-  // };
 
   const onFinish = async (values: any) => {
     const registeredUser: RegisteredUser = {
@@ -55,8 +55,8 @@ export default function LoginBtn() {
       <Modal
         title="Type in your credentials"
         open={isModalOpen}
-        // onOk={handleOk}
-        // onCancel={handleCancel}
+        onCancel={handleCancel}
+        footer={null}
         okText="Login"
       >
         <Form
