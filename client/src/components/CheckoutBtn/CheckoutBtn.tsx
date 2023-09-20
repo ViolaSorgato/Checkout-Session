@@ -1,9 +1,12 @@
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 import "./CheckoutBtn.css";
 import { useShoppingCart } from "../../context/CartContext";
+import { useUserContext } from "../../context/UserContext";
+const { Text } = Typography;
 
 export default function CheckoutBtn() {
   const { cartItems } = useShoppingCart();
+  const { loggedInUser } = useUserContext();
 
   async function handlePayment() {
     const itemsToCheckout = cartItems.map((cartItem) => ({
@@ -30,9 +33,14 @@ export default function CheckoutBtn() {
   }
   return (
     <div>
-      <Button className="CheckoutBtn" type="primary" onClick={handlePayment}>
-        To checkout
-      </Button>
+      {loggedInUser && (
+        <Button className="CheckoutBtn" type="primary" onClick={handlePayment}>
+          To checkout
+        </Button>
+      )}
+      {!loggedInUser && (
+        <Text type="danger">Please log in to proceed to checkout.</Text>
+      )}
     </div>
   );
 }
