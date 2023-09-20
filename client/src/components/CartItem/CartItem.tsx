@@ -17,7 +17,7 @@ export default function CartItem() {
       )}
 
       <Row className="quantity-btn-container">
-        <ul>
+        <ul style={{ listStyleType: "none" }}>
           {cartItems.map((cartItem, index) => (
             <li key={index} className="shoppingcart--content--listitem">
               <h3>{cartItem.name}</h3>
