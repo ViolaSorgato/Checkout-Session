@@ -12,7 +12,7 @@ export default function CartItem() {
       {cartItems.length === 0 && (
         <div>
           <Empty description={false} />
-          <Title level={4}>OBS! Your cart is empty.</Title>
+          <Title level={4}>Your cart is empty.</Title>
         </div>
       )}
 
