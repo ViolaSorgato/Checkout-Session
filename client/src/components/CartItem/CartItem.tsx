@@ -1,17 +1,17 @@
 import { useShoppingCart } from "../../context/CartContext";
-// import { Price, useProductContext } from "../../context/ProductContext";
 import "../CartItem/CartItem.css";
-import { Row } from "antd";
+import { Row, Typography } from "antd";
+const { Title } = Typography;
 
 export default function CartItem() {
-  // const { products } = useProductContext();
   const { cartItems } = useShoppingCart();
-
-  // const item = products.find((i) => i.id === product);
-  // if (item === null) return null;
 
   return (
     <>
+      {cartItems.length === 0 && (
+        <Title level={4}>OBS! Your cart is empty.</Title>
+      )}
+
       <Row className="quantity-btn-container">
         <ul>
           {cartItems.map((cartItem, index) => (

@@ -33,7 +33,7 @@ export default function Header() {
           onClick={showDrawer}
         ></ShoppingTwoTone>
         <Drawer
-          title="Your cart"
+          title="Your Shopping Cart"
           width={500}
           onClose={onClose}
           open={open}
