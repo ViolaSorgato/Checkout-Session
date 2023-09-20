@@ -1,6 +1,7 @@
 import { useShoppingCart } from "../../context/CartContext";
 import "../CartItem/CartItem.css";
-import { Row, Typography } from "antd";
+import { Row, Typography, Empty, Divider } from "antd";
+import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
 const { Title } = Typography;
 
 export default function CartItem() {
@@ -9,7 +10,10 @@ export default function CartItem() {
   return (
     <>
       {cartItems.length === 0 && (
-        <Title level={4}>OBS! Your cart is empty.</Title>
+        <div>
+          <Empty description={false} />
+          <Title level={4}>OBS! Your cart is empty.</Title>
+        </div>
       )}
 
       <Row className="quantity-btn-container">
@@ -24,6 +28,8 @@ export default function CartItem() {
               </p>
             </li>
           ))}
+          <Divider />
+          <CheckoutBtn />
         </ul>
       </Row>
     </>

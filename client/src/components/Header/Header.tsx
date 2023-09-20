@@ -4,7 +4,7 @@ import Logo from "../../assets/Logo.png";
 import LoginBtn from "../Login/LoginBtn";
 import "./Header.css";
 import { useState } from "react";
-import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
+// import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
 import CartItem from "../CartItem/CartItem";
 import RegisterBtn from "../Register/RegisterBtn";
 
@@ -17,7 +17,7 @@ export default function Header() {
   const onClose = () => {
     setOpen(false);
   };
-  // const { cartItems } = useShoppingCart(); // Corrected variable name
+
   return (
     <nav>
       <div className="LogoNav">
@@ -47,7 +47,7 @@ export default function Header() {
             <CartItem />
           </div>
 
-          <CheckoutBtn />
+          {/* <CheckoutBtn /> */}
         </Drawer>
       </div>
     </nav>
