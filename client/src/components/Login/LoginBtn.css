@@ -10,3 +10,14 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.name-logout-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.username {
+  width: 7rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

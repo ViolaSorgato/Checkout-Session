@@ -1,4 +1,5 @@
 import { Button, Modal, Form, Input } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import "./LoginBtn.css";
 import { useState } from "react";
 import { RegisteredUser, useUserContext } from "../../context/UserContext";
@@ -43,7 +44,10 @@ export default function LoginBtn() {
     <div>
       {loggedInUser && (
         <div className="name-logout-container">
-          <h4 className="username">{loggedInUser.username}</h4>
+          <Button>
+            <UserOutlined />
+            {loggedInUser.username}
+          </Button>
 
           <Button type="primary" className="LoginBtn" onClick={logout}>
             Logout
