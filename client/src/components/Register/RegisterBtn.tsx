@@ -60,9 +60,21 @@ export default function RegisterBtn() {
       <Modal
         title="Type in your credentials"
         open={isModalOpen}
-        onOk={handleOk}
         onCancel={handleCancel}
         okText="Register"
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Cancel
+          </Button>,
+          <Button
+            key="submit"
+            type="primary"
+            onClick={handleOk}
+            className="RegisterBtn"
+          >
+            Register
+          </Button>,
+        ]}
       >
         <Form
           name="basic"
