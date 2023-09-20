@@ -42,9 +42,13 @@ export default function LoginBtn() {
   return (
     <div>
       {loggedInUser && (
-        <Button type="primary" className="LoginBtn" onClick={logout}>
-          Logout
-        </Button>
+        <div className="name-logout-container">
+          <h4 className="username">{loggedInUser.username}</h4>
+
+          <Button type="primary" className="LoginBtn" onClick={logout}>
+            Logout
+          </Button>
+        </div>
       )}
       {!loggedInUser && (
         <Button type="primary" className="LoginBtn" onClick={showModal}>
