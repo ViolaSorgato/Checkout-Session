@@ -7,7 +7,7 @@ const path = require("path");
 const filePath = path.join("db", "users.json");
 
 let usersArray = [];
-//DO WE NEED THIS? UNCLEAR
+//GET ALL USERS
 async function getUsers(req, res) {
   try {
     const users = await stripe.customers.list({
@@ -19,7 +19,7 @@ async function getUsers(req, res) {
   }
 }
 
-//authorization
+//AUTHORIZATION
 async function authorization(req, res) {
   if (!req.session.id) {
     return res.status(401).json("You are not logged in");

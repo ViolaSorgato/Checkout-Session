@@ -100,7 +100,7 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
       if (response.status === 200) {
         console.log(data);
       }
-      if (response.status === 409) {
+      if (response.status === 400) {
         console.log("error register");
       }
     } catch (error) {
@@ -123,7 +123,7 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
         if (response.status === 200) {
           setloggedInUser(data);
         }
-        if (response.status === 404) {
+        if (response.status === 401) {
           console.log("error");
         }
       } catch (error) {}
