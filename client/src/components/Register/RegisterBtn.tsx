@@ -43,9 +43,9 @@ export default function RegisterBtn() {
     console.log("Failed:", errorInfo);
   };
   type FieldType = {
-    username?: string;
-    email?: string;
-    password?: string;
+    username: string;
+    email: string;
+    password: string;
   };
 
   return (
@@ -72,6 +72,7 @@ export default function RegisterBtn() {
         >
           <Form.Item<FieldType>
             label="Username"
+            name="username"
             rules={[{ required: true, message: "Please input your username." }]}
           >
             <Input onChange={(e) => setUsername(e.target.value)} />
@@ -79,14 +80,16 @@ export default function RegisterBtn() {
 
           <Form.Item<FieldType>
             label="Email"
+            name="email"
             rules={[
-              { required: true, message: "Please input your email adress." },
+              { required: true, message: "Please input your email address." },
             ]}
           >
             <Input onChange={(e) => setEmail(e.target.value)} />
           </Form.Item>
           <Form.Item<FieldType>
             label="Password"
+            name="password"
             rules={[{ required: true, message: "Please input your password." }]}
           >
             <Input.Password onChange={(e) => setPassword(e.target.value)} />

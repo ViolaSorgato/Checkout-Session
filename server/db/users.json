@@ -58,5 +58,11 @@
     "username": "test test",
     "password": "$2b$10$QCwLpWvRZh3om9ByyVJIDOG0W4PmJq7KWGhb./UQoN8iIwlMuTLKi",
     "email": "test@test.se"
+  },
+  {
+    "id": "cus_OfpFUD9SqzXuzH",
+    "username": "user@user.se",
+    "password": "$2b$10$wmbnqBnhNheIvsTSj153ze5DDYP30Xzcpun8Q8lJyYMY7m6FzlY6y",
+    "email": null
   }
 ]
