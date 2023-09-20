@@ -17,10 +17,6 @@ export default function LoginBtn() {
     setIsModalOpen(false);
   };
 
-  // const handleOk = () => {
-  //   setIsModalOpen(false);
-  // };
-
   // //CODE TO HANDLE FORM
 
   const onFinish = async (values: any) => {
