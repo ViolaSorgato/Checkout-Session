@@ -1,3 +1,5 @@
+import { message } from "antd";
+
 // user-context.tsx
 import React, {
   createContext,
@@ -99,9 +101,10 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
 
       if (response.status === 200) {
         console.log(data);
-      }
-      if (response.status === 400) {
-        console.log("error register");
+      } else if (response.status === 400) {
+        message.error(
+          "There is already an account with these credentials. Please log in instead."
+        );
       }
     } catch (error) {
       console.log(error);
