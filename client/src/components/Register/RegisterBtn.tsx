@@ -5,6 +5,7 @@ import { NewUser, useUserContext } from "../../context/UserContext";
 
 export default function RegisterBtn() {
   const {
+    loggedInUser,
     registerUser,
     username,
     setUsername,
@@ -50,9 +51,12 @@ export default function RegisterBtn() {
 
   return (
     <>
-      <Button type="primary" className="RegisterBtn" onClick={showModal}>
-        Register
-      </Button>
+      {!loggedInUser && (
+        <Button type="primary" className="RegisterBtn" onClick={showModal}>
+          Register
+        </Button>
+      )}
+
       <Modal
         title="Type in your credentials"
         open={isModalOpen}
