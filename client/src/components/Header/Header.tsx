@@ -6,6 +6,7 @@ import "./Header.css";
 import { useState } from "react";
 import CartItem from "../CartItem/CartItem";
 import RegisterBtn from "../Register/RegisterBtn";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -20,7 +21,9 @@ export default function Header() {
   return (
     <nav>
       <div className="LogoNav">
-        <img src={Logo} alt="Logo" />
+        <Link to="/">
+          <img src={Logo} alt="Logo" />
+        </Link>
       </div>
 
       <div className="BtnNav">
