@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./RegisterBtn.css";
-import { Button, Modal, Form, Input } from "antd";
+import { Button, Modal, Form, Input, message } from "antd";
 import { NewUser, useUserContext } from "../../context/UserContext";
 
 export default function RegisterBtn() {
   const {
+    loggedInUser,
     registerUser,
     username,
     setUsername,
@@ -21,13 +22,23 @@ export default function RegisterBtn() {
   };
 
   const handleOk = async () => {
-    setIsModalOpen(false);
+    if (!username || !email || !password) {
+      message.error("Please fill in all fields before registering.");
+      return;
+    }
+
     const newUser: NewUser = {
       username,
       email,
       password,
     };
     await registerUser(newUser);
+    setIsModalOpen(false);
+    // if (newUser) {
+    //   message.success(
+    //     "Wow! You are registered as a new customer! Now please log in."
+    //   );
+    // }
   };
 
   //FUNCTIONS TO HANDLE FORM
@@ -43,22 +54,37 @@ export default function RegisterBtn() {
     console.log("Failed:", errorInfo);
   };
   type FieldType = {
-    username?: string;
-    email?: string;
-    password?: string;
+    username: string;
+    email: string;
+    password: string;
   };
 
   return (
     <>
-      <Button type="primary" className="RegisterBtn" onClick={showModal}>
-        Register
-      </Button>
+      {!loggedInUser && (
+        <Button type="primary" className="RegisterBtn" onClick={showModal}>
+          Register
+        </Button>
+      )}
+
       <Modal
         title="Type in your credentials"
         open={isModalOpen}
-        onOk={handleOk}
         onCancel={handleCancel}
         okText="Register"
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Cancel
+          </Button>,
+          <Button
+            key="submit"
+            type="primary"
+            onClick={handleOk}
+            className="RegisterBtn"
+          >
+            Register
+          </Button>,
+        ]}
       >
         <Form
           name="basic"
@@ -72,6 +98,7 @@ export default function RegisterBtn() {
         >
           <Form.Item<FieldType>
             label="Username"
+            name="username"
             rules={[{ required: true, message: "Please input your username." }]}
           >
             <Input onChange={(e) => setUsername(e.target.value)} />
@@ -79,14 +106,16 @@ export default function RegisterBtn() {
 
           <Form.Item<FieldType>
             label="Email"
+            name="email"
             rules={[
-              { required: true, message: "Please input your email adress." },
+              { required: true, message: "Please input your email address." },
             ]}
           >
             <Input onChange={(e) => setEmail(e.target.value)} />
           </Form.Item>
           <Form.Item<FieldType>
             label="Password"
+            name="password"
             rules={[{ required: true, message: "Please input your password." }]}
           >
             <Input.Password onChange={(e) => setPassword(e.target.value)} />

@@ -4,9 +4,9 @@ import Logo from "../../assets/Logo.png";
 import LoginBtn from "../Login/LoginBtn";
 import "./Header.css";
 import { useState } from "react";
-import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
 import CartItem from "../CartItem/CartItem";
 import RegisterBtn from "../Register/RegisterBtn";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -17,11 +17,13 @@ export default function Header() {
   const onClose = () => {
     setOpen(false);
   };
-  // const { cartItems } = useShoppingCart(); // Corrected variable name
+
   return (
     <nav>
       <div className="LogoNav">
-        <img src={Logo} alt="Logo" />
+        <Link to="/">
+          <img src={Logo} alt="Logo" />
+        </Link>
       </div>
 
       <div className="BtnNav">
@@ -33,7 +35,7 @@ export default function Header() {
           onClick={showDrawer}
         ></ShoppingTwoTone>
         <Drawer
-          title="Your cart"
+          title="Your Shopping Cart"
           width={500}
           onClose={onClose}
           open={open}
@@ -46,8 +48,6 @@ export default function Header() {
           <div>
             <CartItem />
           </div>
-
-          <CheckoutBtn />
         </Drawer>
       </div>
     </nav>

@@ -58,5 +58,23 @@
     "username": "test test",
     "password": "$2b$10$QCwLpWvRZh3om9ByyVJIDOG0W4PmJq7KWGhb./UQoN8iIwlMuTLKi",
     "email": "test@test.se"
+  },
+  {
+    "id": "cus_OfpFUD9SqzXuzH",
+    "username": "user@user.se",
+    "password": "$2b$10$wmbnqBnhNheIvsTSj153ze5DDYP30Xzcpun8Q8lJyYMY7m6FzlY6y",
+    "email": null
+  },
+  {
+    "id": "cus_OfqUebVy9LpJLD",
+    "username": "Test Test",
+    "password": "$2b$10$NLkBA.yXgYKJKt6QsvHuOeSew6Is6OHVKcHhq.4VUlELknMK6JwFe",
+    "email": "test@test.com"
+  },
+  {
+    "id": "cus_OfqWNPeobNgb0B",
+    "username": "abc",
+    "password": "$2b$10$HuHhOzI6Yc7sNY9l9sRnT.MnyUHsFjSUHqQTmeRMYYkenhGifKNWK",
+    "email": "abc@abc.se"
   }
 ]

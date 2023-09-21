@@ -1,4 +1,5 @@
 import { Button, Modal, Form, Input } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import "./LoginBtn.css";
 import { useState } from "react";
 import { RegisteredUser, useUserContext } from "../../context/UserContext";
@@ -12,15 +13,11 @@ export default function LoginBtn() {
   const showModal = () => {
     setIsModalOpen(true);
   };
-
-  // const handleOk = () => {
-  //   setIsModalOpen(false);
-  // };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   // //CODE TO HANDLE FORM
-  // const handleCancel = () => {
-  //   setIsModalOpen(false);
-  // };
 
   const onFinish = async (values: any) => {
     const registeredUser: RegisteredUser = {
@@ -42,9 +39,16 @@ export default function LoginBtn() {
   return (
     <div>
       {loggedInUser && (
-        <Button type="primary" className="LoginBtn" onClick={logout}>
-          Logout
-        </Button>
+        <div className="name-logout-container">
+          <Button>
+            <UserOutlined />
+            {loggedInUser.username}
+          </Button>
+
+          <Button type="primary" className="LoginBtn" onClick={logout}>
+            Logout
+          </Button>
+        </div>
       )}
       {!loggedInUser && (
         <Button type="primary" className="LoginBtn" onClick={showModal}>
@@ -55,8 +59,8 @@ export default function LoginBtn() {
       <Modal
         title="Type in your credentials"
         open={isModalOpen}
-        // onOk={handleOk}
-        // onCancel={handleCancel}
+        onCancel={handleCancel}
+        footer={null}
         okText="Login"
       >
         <Form
@@ -84,8 +88,10 @@ export default function LoginBtn() {
           >
             <Input.Password />
           </Form.Item>
-          <Form.Item>
-            <Button htmlType="submit">Login into account</Button>
+          <Form.Item className="submit-container">
+            <Button type="primary" htmlType="submit" className="submitBtn">
+              Login
+            </Button>
           </Form.Item>
         </Form>
       </Modal>
