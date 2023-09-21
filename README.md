@@ -24,8 +24,11 @@ För att få igång detta projekt gör du följande:
 
         git clone https://github.com/ViolaSorgato/Checkout-Session.git
 
-
 - Öppna upp projektet i editor Visual Studio Code för att direkt härifrån nå Terminalen.
+
+**Nycklar**
+
+-Samtliga nycklar är hemliga och finns inte med i projektet eller repot. Applikationen kommer inte att fungera utan nycklarna. Kontakta mig för att få dem.
 
 **Server**
 
