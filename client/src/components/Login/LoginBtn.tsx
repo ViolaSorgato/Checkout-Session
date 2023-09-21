@@ -1,18 +1,11 @@
 import { Button, Modal, Form, Input } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import "./LoginBtn.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RegisteredUser, useUserContext } from "../../context/UserContext";
 
 export default function LoginBtn() {
   const { loggedInUser, login, logout } = useUserContext();
-
-  const [isUsernameVisible, setIsUsernameVisible] = useState(false);
-
-  // Trigger a re-render when loggedInUser changes
-  useEffect(() => {
-    setIsUsernameVisible(!!loggedInUser);
-  }, [loggedInUser]);
 
   //CODE TO OPEN/CLOSE MODAL
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,7 +38,7 @@ export default function LoginBtn() {
   };
   return (
     <div>
-      {loggedInUser && isUsernameVisible && (
+      {loggedInUser && (
         <div className="name-logout-container">
           <Button>
             <UserOutlined />

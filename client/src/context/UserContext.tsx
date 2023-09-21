@@ -128,9 +128,12 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
         console.log(data);
         if (response.status === 200) {
           setloggedInUser(data);
+          message.success("Wow! You logged in successfully!");
         }
         if (response.status === 401) {
-          console.log("error");
+          message.error(
+            "This account does not exist. Please register instead."
+          );
         }
       } catch (error) {}
     }
