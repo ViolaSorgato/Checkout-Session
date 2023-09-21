@@ -1,6 +1,7 @@
 import { createContext, useContext, ReactNode, useState } from "react";
 import { Price } from "./ProductContext";
 
+//TYPES
 export type CartItem = {
   id: string;
   quantity: number;
@@ -19,12 +20,15 @@ type ShoppingCartContext = {
 type ShoppingCartProviderProps = {
   children: ReactNode;
 };
+
+//CREATE AND USE CONTEXT
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
 export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
+//PROVIDER
 export default function ShoppingCartProvider({
   children,
 }: ShoppingCartProviderProps) {
@@ -39,6 +43,7 @@ export default function ShoppingCartProvider({
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
 
+  //ADD TO CART FUNCTION
   function addToCart(id: string, name: string, price: Price) {
     const quantity = getItemQuantity(id);
     console.log(quantity);

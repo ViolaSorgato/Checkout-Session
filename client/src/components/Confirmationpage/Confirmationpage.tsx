@@ -2,6 +2,7 @@ import "./Confirmationpage.css";
 import { Button, Result } from "antd";
 import { Link } from "react-router-dom";
 
+//SHOWS CONFIRMATION PAGE
 export default function Confirmationpage() {
   return (
     <Result

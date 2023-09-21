@@ -82,5 +82,11 @@
     "username": "Blep Blep",
     "password": "$2b$10$mxn/tBQE.ArXVSGnZFzAG.Bov0GajIK4hpnRc4IBf/orYvdpqmPNq",
     "email": "blep@gmail.com"
+  },
+  {
+    "id": "cus_Og641EoI1sMvhk",
+    "username": "Last Test",
+    "password": "$2b$10$bSuEYqkjF8ol03Q32v624u5XUf.B.7z45fuHo4NNpDEqQTw3MbXXK",
+    "email": "last@gmail.com"
   }
 ]

@@ -4,6 +4,7 @@ import { Row, Typography, Empty } from "antd";
 import CheckoutBtn from "../CheckoutBtn/CheckoutBtn";
 const { Title } = Typography;
 
+//SHOWS EITHER EMPTY CART OR LIST OF CART ITEMS
 export default function CartItem() {
   const { cartItems } = useShoppingCart();
 

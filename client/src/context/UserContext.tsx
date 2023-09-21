@@ -1,6 +1,4 @@
 import { message } from "antd";
-
-// user-context.tsx
 import React, {
   createContext,
   useState,
@@ -9,7 +7,7 @@ import React, {
   useEffect,
 } from "react";
 
-// Define the interfaces
+//INTERFACES
 
 export interface User {
   id: string;
@@ -29,7 +27,7 @@ export interface RegisteredUser {
   password: string;
 }
 
-// Create a UserContext interface
+//CONTEXT
 export interface UserContext {
   username: string;
   setUsername: React.Dispatch<React.SetStateAction<string>>;
@@ -44,7 +42,7 @@ export interface UserContext {
   loggedInUser?: User | null;
 }
 
-// Initialize the context with default values
+// DEFAULT VALUES
 const defaultValues: UserContext = {
   username: "",
   setUsername: () => {},
@@ -59,18 +57,18 @@ const defaultValues: UserContext = {
   loggedInUser: null,
 };
 
-// Create the UserContext
+// CREATE AND USE CONTEXT
 export const UserContext = createContext<UserContext>(defaultValues);
 export const useUserContext = () => useContext(UserContext);
 
-// UserProvider component
+// PROVIDER
 const UserProvider = ({ children }: PropsWithChildren<{}>) => {
-  // const [user, setUser] = useState<User | null>(null);
   const [loggedInUser, setloggedInUser] = useState<User | null>(null);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //AUTH
   const authorization = async () => {
     try {
       const response = await fetch("/api/users/authorize");
@@ -87,7 +85,7 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
     authorization();
   }, []);
 
-  // Function to register a new user
+  // FUNCTION TO REGISTER NEW USER
   const registerUser = async (newUser: NewUser) => {
     try {
       const response = await fetch("api/users/register", {
@@ -114,6 +112,7 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
     }
   };
 
+  //LOGIN FUNCTION
   const login = async (user: RegisteredUser) => {
     if (user) {
       try {
@@ -139,7 +138,7 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
     }
   };
 
-  // Function to log the user out
+  //LOGOUT FUNCTION
   const logout = async () => {
     try {
       const response = await fetch("api/users/logout", {
