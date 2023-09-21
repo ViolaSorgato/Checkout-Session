@@ -76,7 +76,6 @@ async function registerUser(req, res) {
 //LOGIN
 async function loginUser(req, res) {
   const { username, password } = req.body;
-  console.log(req.body);
   try {
     const fileData = fs.readFileSync(filePath, "utf8");
     usersArray = JSON.parse(fileData);

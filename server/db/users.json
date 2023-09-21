@@ -88,5 +88,11 @@
     "username": "Last Test",
     "password": "$2b$10$bSuEYqkjF8ol03Q32v624u5XUf.B.7z45fuHo4NNpDEqQTw3MbXXK",
     "email": "last@gmail.com"
+  },
+  {
+    "id": "cus_Og6RvWCtZ7h3bJ",
+    "username": "Check",
+    "password": "$2b$10$.pXHRBZFmvrVpmIA4daJRuyjWqlDoPq.Crp6WxMQZIZDYJ3GrMQ/O",
+    "email": "check@gmail.com"
   }
 ]

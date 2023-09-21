@@ -124,7 +124,6 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
           body: JSON.stringify(user),
         });
         const data = await response.json();
-        console.log(data);
         if (response.status === 200) {
           setloggedInUser(data);
           message.success("Wow! You logged in successfully!");

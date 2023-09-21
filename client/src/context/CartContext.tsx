@@ -46,7 +46,6 @@ export default function ShoppingCartProvider({
   //ADD TO CART FUNCTION
   function addToCart(id: string, name: string, price: Price) {
     const quantity = getItemQuantity(id);
-    console.log(quantity);
 
     if (quantity === 0) {
       setCartItems([

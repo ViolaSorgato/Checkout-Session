@@ -15,8 +15,6 @@ export default function CheckoutBtn() {
       product: cartItem.id,
       quantity: cartItem.quantity,
     }));
-    console.log(itemsToCheckout);
-    console.log(cartItems);
 
     const response = await fetch("/api/create-checkout-session", {
       method: "POST",
