@@ -101,6 +101,9 @@ const UserProvider = ({ children }: PropsWithChildren<{}>) => {
 
       if (response.status === 200) {
         console.log(data);
+        message.success(
+          "Wow! You are registered as a new customer! Now please log in."
+        );
       } else if (response.status === 400) {
         message.error(
           "There is already an account with these credentials. Please log in instead."

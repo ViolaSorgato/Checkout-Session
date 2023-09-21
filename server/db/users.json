@@ -76,5 +76,11 @@
     "username": "abc",
     "password": "$2b$10$HuHhOzI6Yc7sNY9l9sRnT.MnyUHsFjSUHqQTmeRMYYkenhGifKNWK",
     "email": "abc@abc.se"
+  },
+  {
+    "id": "cus_Og5KiQP0uRiN63",
+    "username": "Blep Blep",
+    "password": "$2b$10$mxn/tBQE.ArXVSGnZFzAG.Bov0GajIK4hpnRc4IBf/orYvdpqmPNq",
+    "email": "blep@gmail.com"
   }
 ]
