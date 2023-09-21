@@ -34,11 +34,11 @@ export default function RegisterBtn() {
     };
     await registerUser(newUser);
     setIsModalOpen(false);
-    if (newUser) {
-      message.success(
-        "Wow! You are registered as a new customer! Now please log in."
-      );
-    }
+    // if (newUser) {
+    //   message.success(
+    //     "Wow! You are registered as a new customer! Now please log in."
+    //   );
+    // }
   };
 
   //FUNCTIONS TO HANDLE FORM
