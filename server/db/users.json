@@ -94,5 +94,11 @@
     "username": "Check",
     "password": "$2b$10$.pXHRBZFmvrVpmIA4daJRuyjWqlDoPq.Crp6WxMQZIZDYJ3GrMQ/O",
     "email": "check@gmail.com"
+  },
+  {
+    "id": "cus_Og6WNabHThE9iZ",
+    "username": "Sandra",
+    "password": "$2b$10$gJc2EN6WXyUOVSI57DWZm.hQPFoXOvaYx9kPc.lnQyHLyb98.oLAu",
+    "email": "sandra@gmail.com"
   }
 ]
