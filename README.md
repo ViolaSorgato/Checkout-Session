@@ -28,7 +28,7 @@ För att få igång detta projekt gör du följande:
 
 **Nycklar**
 
--Samtliga nycklar är hemliga och finns inte med i projektet eller repot. Applikationen kommer inte att fungera utan nycklarna. Kontakta mig för att få dem.
+- Samtliga nycklar är hemliga och finns inte med i projektet eller repot. Applikationen kommer inte att fungera utan nycklarna. Kontakta mig för att få dem.
 
 **Server**
 
