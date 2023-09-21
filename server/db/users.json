@@ -76,5 +76,29 @@
     "username": "abc",
     "password": "$2b$10$HuHhOzI6Yc7sNY9l9sRnT.MnyUHsFjSUHqQTmeRMYYkenhGifKNWK",
     "email": "abc@abc.se"
+  },
+  {
+    "id": "cus_Og5KiQP0uRiN63",
+    "username": "Blep Blep",
+    "password": "$2b$10$mxn/tBQE.ArXVSGnZFzAG.Bov0GajIK4hpnRc4IBf/orYvdpqmPNq",
+    "email": "blep@gmail.com"
+  },
+  {
+    "id": "cus_Og641EoI1sMvhk",
+    "username": "Last Test",
+    "password": "$2b$10$bSuEYqkjF8ol03Q32v624u5XUf.B.7z45fuHo4NNpDEqQTw3MbXXK",
+    "email": "last@gmail.com"
+  },
+  {
+    "id": "cus_Og6RvWCtZ7h3bJ",
+    "username": "Check",
+    "password": "$2b$10$.pXHRBZFmvrVpmIA4daJRuyjWqlDoPq.Crp6WxMQZIZDYJ3GrMQ/O",
+    "email": "check@gmail.com"
+  },
+  {
+    "id": "cus_Og6WNabHThE9iZ",
+    "username": "Sandra",
+    "password": "$2b$10$gJc2EN6WXyUOVSI57DWZm.hQPFoXOvaYx9kPc.lnQyHLyb98.oLAu",
+    "email": "sandra@gmail.com"
   }
 ]

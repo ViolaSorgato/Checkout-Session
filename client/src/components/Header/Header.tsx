@@ -1,4 +1,4 @@
-import { Button, Drawer, Space } from "antd";
+import { Button, Drawer, Space, Badge } from "antd";
 import { ShoppingTwoTone } from "@ant-design/icons";
 import Logo from "../../assets/Logo.png";
 import LoginBtn from "../Login/LoginBtn";
@@ -7,10 +7,21 @@ import { useState } from "react";
 import CartItem from "../CartItem/CartItem";
 import RegisterBtn from "../Register/RegisterBtn";
 import { Link } from "react-router-dom";
+import { useShoppingCart } from "../../context/CartContext";
 
+//HANDLES HEADER AND DRAWER FOR SHOPPING CART
+//THE CART CONTENT IS IN CARTITEM.TSX
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const { cartItems } = useShoppingCart();
 
+  //CALCULATE CART QUANTITY FOR BADGE ON CART ICON
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  //OPEN AND CLOSE DRAWER
   const showDrawer = () => {
     setOpen(true);
   };
@@ -29,11 +40,14 @@ export default function Header() {
       <div className="BtnNav">
         <RegisterBtn />
         <LoginBtn />
-        <ShoppingTwoTone
-          className="ShoppincartIcon"
-          twoToneColor="#7E66F9"
-          onClick={showDrawer}
-        ></ShoppingTwoTone>
+        <Badge count={totalQuantity} color="pink">
+          <ShoppingTwoTone
+            className="ShoppincartIcon"
+            twoToneColor="#7E66F9"
+            onClick={showDrawer}
+          ></ShoppingTwoTone>
+        </Badge>
+
         <Drawer
           title="Your Shopping Cart"
           width={500}

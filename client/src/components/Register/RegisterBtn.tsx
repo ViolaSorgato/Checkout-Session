@@ -3,6 +3,7 @@ import "./RegisterBtn.css";
 import { Button, Modal, Form, Input, message } from "antd";
 import { NewUser, useUserContext } from "../../context/UserContext";
 
+//HANDLES MODAL AND FORM FOR REGISTER, CALLS REGISTERUSER FUNCTION
 export default function RegisterBtn() {
   const {
     loggedInUser,
@@ -15,7 +16,7 @@ export default function RegisterBtn() {
     setPassword,
   } = useUserContext();
 
-  //FUNCTIONS TO OPEN/CLOSE MODAL
+  //CODE TO OPEN/CLOSE MODAL
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -34,11 +35,6 @@ export default function RegisterBtn() {
     };
     await registerUser(newUser);
     setIsModalOpen(false);
-    // if (newUser) {
-    //   message.success(
-    //     "Wow! You are registered as a new customer! Now please log in."
-    //   );
-    // }
   };
 
   //FUNCTIONS TO HANDLE FORM

@@ -1,9 +1,9 @@
 import { useProductContext } from "../../context/ProductContext";
 import { Button, Card, Space } from "antd";
-
 import "./ProductList.css";
 import { useShoppingCart } from "../../context/CartContext";
 
+//RETURNS LIST OF STRIPE PRODUCTS AND CALLS ADDTOCART FUNCTION
 export default function ProductList() {
   const { products } = useProductContext();
   const { addToCart } = useShoppingCart();

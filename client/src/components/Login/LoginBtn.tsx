@@ -4,6 +4,7 @@ import "./LoginBtn.css";
 import { useState } from "react";
 import { RegisteredUser, useUserContext } from "../../context/UserContext";
 
+//HANDLES MODAL AND FORM FOR LOGIN, CALLS LOGIN AND LOGOUT FUNCTION
 export default function LoginBtn() {
   const { loggedInUser, login, logout } = useUserContext();
 
@@ -17,8 +18,7 @@ export default function LoginBtn() {
     setIsModalOpen(false);
   };
 
-  // //CODE TO HANDLE FORM
-
+  //CODE TO HANDLE FORM AND CALL LOGIN FUNCTION
   const onFinish = async (values: any) => {
     const registeredUser: RegisteredUser = {
       username: values.username,

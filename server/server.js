@@ -8,7 +8,7 @@ const { checkoutRouter } = require("./checkout/checkout.router");
 const { productRouter } = require("./product/product.router");
 const { userRouter } = require("./user/user.router");
 const app = express();
-app.use(express.json()); //goes through all post endpoints and transform into right data format
+app.use(express.json());
 app.use(bodyParser.json());
 
 // Middlewares, important with right order

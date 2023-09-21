@@ -8,6 +8,7 @@ import {
   PropsWithChildren,
 } from "react";
 
+//INTERFACES
 export interface Product {
   id: string;
   name: string;
@@ -23,25 +24,29 @@ export interface Price {
   currency: string;
 }
 
+//CONTEXT
 export interface ProductContext {
   products: Product[];
   setProducts: Dispatch<SetStateAction<Product[]>>;
   fetchProducts: () => void;
 }
 
+//DEFAULT VALUES
 const defaultValues = {
   products: [],
   setProducts: () => {},
   fetchProducts: () => {},
 };
 
+//CREATE AND USE CONTEXT
 export const ProductContext = createContext<ProductContext>(defaultValues);
-
 export const useProductContext = () => useContext(ProductContext);
 
+//PROVIDER
 export const ProductProvider = ({ children }: PropsWithChildren<{}>) => {
   const [products, setProducts] = useState<Product[]>([]);
 
+  //GET LIST OF PRODUCTS
   const fetchProducts = async () => {
     try {
       const response = await fetch("api/products");

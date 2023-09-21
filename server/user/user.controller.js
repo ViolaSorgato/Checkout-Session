@@ -34,7 +34,6 @@ async function registerUser(req, res) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   //ARRAY OF USERS
-
   try {
     const fileData = fs.readFileSync(filePath, "utf8");
     usersArray = JSON.parse(fileData);
@@ -77,7 +76,6 @@ async function registerUser(req, res) {
 //LOGIN
 async function loginUser(req, res) {
   const { username, password } = req.body;
-  console.log(req.body);
   try {
     const fileData = fs.readFileSync(filePath, "utf8");
     usersArray = JSON.parse(fileData);

@@ -17,10 +17,8 @@ async function checkout(req, res) {
       cancel_url: CLIENT_URL,
     });
 
-    //nu vill vi redirecta till stripe checkout url
     res.status(200).json({ url: session.url });
   } catch (error) {
-    console.log(error.message);
     res.status(400).json("Something went wrong...");
   }
 }

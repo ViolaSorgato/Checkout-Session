@@ -1,12 +1,9 @@
-// import Header from "../Header/Header";
 import MainContent from "../MainContent/MainContent";
 
-function Homepage() {
+export default function Homepage() {
   return (
     <>
       <MainContent />
     </>
   );
 }
-
-export default Homepage;

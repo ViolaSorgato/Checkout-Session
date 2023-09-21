@@ -4,6 +4,8 @@ import { useShoppingCart } from "../../context/CartContext";
 import { useUserContext } from "../../context/UserContext";
 const { Text } = Typography;
 
+//SHOWS EITHER CHECKOUT BUTTON OR WARNING MESSAGE, DEPENDING WHETHER LOGGEDIN OR NOT
+//CALLS HANDLEPAYMENT FUNCTION
 export default function CheckoutBtn() {
   const { cartItems } = useShoppingCart();
   const { loggedInUser } = useUserContext();
@@ -13,8 +15,6 @@ export default function CheckoutBtn() {
       product: cartItem.id,
       quantity: cartItem.quantity,
     }));
-    console.log(itemsToCheckout);
-    console.log(cartItems);
 
     const response = await fetch("/api/create-checkout-session", {
       method: "POST",
